@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
   <head>
     <title>Sharkapp</title>
@@ -10,5 +10,25 @@
 
   <body>
     <%= yield %>
+  </body>
+</html>-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "About Sharks" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "About Sharks" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+    <%= content_for?(:content) ? yield(:content) : yield %>
+    </main>
   </body>
 </html>
